@@ -1,8 +1,8 @@
 {
-  "name": "",
-  "description": "",
+  "name": "harmony-proxy",
+  "description": "Small shim providing `new Proxy(target, handler)`",
   "version": "0.0.1",
-  "keywords": [],
+  "keywords": ["harmony", "proxy", "trap", "es6"],
   "main": "./index",
   "maintainers": [
     "Arpad Borsos <arpad.borsos@googlemail.com> (http://swatinem.de)"
@@ -19,6 +19,6 @@
   "scripts": {
     "test": "make test && make test-coveralls"
   },
-  "repository": "git://github.com/Swatinem/.git",
+  "repository": "git://github.com/Swatinem/proxy.git",
   "license": "LGPLv3"
 }
