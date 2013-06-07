@@ -69,5 +69,12 @@ describe('Proxy', function () {
 		new p(1, 2);
 		called.should.eql([true, true]);
 	});
+	it('should use the correct prototype', function () {
+		function T() {}
+		var t = new T;
+		var p = new Proxy(t, {});
+		p.should.be.an.instanceof.T;
+		Object.getPrototypeOf(p).should.equal(T.prototype);
+	});
 });
 
