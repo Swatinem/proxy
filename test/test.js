@@ -25,8 +25,8 @@ describe('Proxy', function () {
 		var o = {};
 		var calls = [];
 		var p = new Proxy(o, {
-			getOwnPropertyDescriptor: function (target, name) { calls[0] = true; return {value: 'bar', configurable: true}; },
-			getOwnPropertyNames: function (target, name) { calls[1] = true; return ['b']; },
+			getOwnPropertyDescriptor: function () { calls[0] = true; return {value: 'bar', configurable: true}; },
+			getOwnPropertyNames: function () { calls[1] = true; return ['b']; },
 			defineProperty: function (target, name, desc) {calls[2] = true; Object.defineProperty(target, name, desc); return true; },
 			deleteProperty: function (target, name) { calls[3] = true; delete target[name]; },
 			has: function (target, name) { calls[4] = true; return name in target; },
@@ -71,7 +71,7 @@ describe('Proxy', function () {
 	});
 	it('should use the correct prototype', function () {
 		function T() {}
-		var t = new T;
+		var t = new T();
 		var p = new Proxy(t, {});
 		p.should.be.an.instanceof.T;
 		Object.getPrototypeOf(p).should.equal(T.prototype);
