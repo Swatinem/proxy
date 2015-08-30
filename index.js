@@ -95,8 +95,9 @@ function ProxyShim(target, handler) {
 		return Proxy.create(oldHandler, Object.getPrototypeOf(target));
 	return Proxy.createFunction(
 		oldHandler,
-		handler.apply && function () {
-			return handler.apply(target, this, Array.prototype.slice.call(arguments));
+		function () {
+			if(handler.apply) return handler.apply(target, this, Array.prototype.slice.call(arguments))
+			return target.apply(this, Array.prototype.slice.call(arguments));
 		},
 		handler.construct && function () {
 			return handler.construct(target, Array.prototype.slice.call(arguments));
