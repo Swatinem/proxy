@@ -1,7 +1,7 @@
 {
   "name": "harmony-proxy",
   "description": "Small shim providing `new Proxy(target, handler)`",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "keywords": ["harmony", "proxy", "trap", "es6"],
   "main": "./index",
   "maintainers": [
@@ -20,5 +20,5 @@
     "test": "make test-coveralls"
   },
   "repository": "git://github.com/Swatinem/proxy.git",
-  "license": "LGPLv3"
+  "license": "LGPL-3.0"
 }

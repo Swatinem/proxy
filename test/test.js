@@ -1,4 +1,4 @@
-
+/*global Proxy:true */
 var Proxy = require('../');
 var should = require('should');
 
@@ -68,6 +68,11 @@ describe('Proxy', function () {
 		p(1);
 		new p(1, 2);
 		called.should.eql([true, true]);
+	});
+	it('should allow functions without an apply trap', function () {
+		var fn = function () { return 1; };
+		var p = new Proxy(fn, {});
+		p().should.eql(1);
 	});
 	it('should use the correct prototype', function () {
 		function T() {}

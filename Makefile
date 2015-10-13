@@ -1,5 +1,5 @@
 test: lint
-	NODE_ENV=test node --harmony ./node_modules/.bin/istanbul cover \
+	NODE_ENV=test node --harmony-proxies ./node_modules/.bin/istanbul cover \
 		./node_modules/mocha/bin/_mocha
 
 lint:
