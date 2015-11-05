@@ -9,6 +9,9 @@ if (typeof Proxy === 'undefined')
 // Check if we actually have new-style Proxies
 module.exports = typeof Proxy.create !== 'function' ? Proxy : ProxyShim;
 
+// Keep local reference in case global reference is overwritten
+var OldProxy = Proxy;
+
 function ProxyShim(target, handler) {
 	// this code is mostly copied from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Old_Proxy_API
 	var oldHandler = {
@@ -92,8 +95,8 @@ function ProxyShim(target, handler) {
 		};
 
 	if (typeof target !== 'function')
-		return Proxy.create(oldHandler, Object.getPrototypeOf(target));
-	return Proxy.createFunction(
+		return OldProxy.create(oldHandler, Object.getPrototypeOf(target));
+	return OldProxy.createFunction(
 		oldHandler,
 		function () {
 			if (handler.apply)
