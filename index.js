@@ -4,7 +4,7 @@
 
 // We need to have at least old-style Proxies
 if (typeof Proxy === 'undefined')
-	throw new Error('Native proxies not enabled. use `node --harmony` or `node --harmony-proxies`');
+	throw new Error('Native proxies not enabled. use `node --harmony-proxies` to enable them.');
 
 // Check if we actually have new-style Proxies
 module.exports = typeof Proxy.create !== 'function' ? Proxy : ProxyShim;
